@@ -127,7 +127,7 @@ async def callback_handlers(_, event: CallbackQuery):
     codec.insert(0, "libx265")
  
   elif "iavc" in event.data:
-    codec.insert(0, "iavc")
+        codec.insert(0, "libx264")
     
     
 # still some left 🤮
