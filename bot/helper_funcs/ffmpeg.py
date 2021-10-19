@@ -22,6 +22,10 @@ from bot import (
     UN_FINISHED_PROGRESS_STR,
     DOWNLOAD_LOCATION,
     crf,
+    resolution,
+    audio_b,
+    preset,
+    codec,
     watermark,
     pid_list
 )
@@ -40,8 +44,12 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
      ## -vf eq=gamma=1.4:saturation=1.4
      ## lol 😂
     crf.append("32")
+    codec.append("libx265")
+    resolution.append("854x480")
+    audio_b.append("40k")
+    preset.append("veryfast")
     watermark.append('-vf "drawtext=fontfile=font.ttf:fontsize=25:fontcolor=white:bordercolor=black@0.50:x=w-tw-10:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=Animes-Encoded"')
-    file_genertor_command = f'ffmpeg -hide_banner -loglevel quiet -progress "{progress}" -i "{video_file}" {watermark[0]} -c:v libx265 -map 0 -crf {crf[0]} -c:s copy -pix_fmt yuv420p -s 854x480 -b:v 150k -c:a libopus -b:a 40k "{out_put_file_name}" -y'
+    file_genertor_command = f'ffmpeg -hide_banner -loglevel quiet -progress "{progress}" -i "{video_file}" {watermark[0]} -c:v {codec[0]}  -map 0 -crf {crf[0]} -c:s copy -pix_fmt yuv420p -s {resolution[0]} -b:v 150k -c:a libopus -b:a {audio_b[0]} -preset {preset[0]}  "{out_put_file_name}" -y'
  #Done !!
     COMPRESSION_START_TIME = time.time()
     process = await asyncio.create_subprocess_shell(
