@@ -30,14 +30,6 @@ from bot import (
     pid_list
 )
 
-# inline buttons with callback query data , using append feature ( god level idea 😎 )
-guide_b=[]
-guide_b.append([InlineKeyboardButton("CRF", callback_data="icrf")])
-guide_b.append([InlineKeyboardButton("CODEC", callback_data="icodec")])
-guide_b.append([InlineKeyboardButton("VBR", callback_data="ivbr")])
-guide_b.append([InlineKeyboardButton("Save It And Dont Turn Back", callback_data="beck")])
-
-
 
 
 
