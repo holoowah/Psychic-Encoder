@@ -72,7 +72,17 @@ if __name__ == "__main__" :
     )
     app.add_handler(incoming_start_message_handler)
     
-            
+    
+    @app.on_message(filters.incoming & filters.command(["crf", f"crf@{BOT_USERNAME}"]))
+    async def changecrf(app, message):
+          if message.from_user.id in AUTH_USERS:
+                cr = message.text.split(" ", maxsplit=1)[1]
+                OUT = f"Done! Successfully <b>CRF</b> has been set at the value of <b>{cr}</b>"
+                crf.insert(0, f"{cr}")
+                await message.reply_text(OUT)
+          else:
+            await message.reply_text("Error!")
+      
     @app.on_message(filters.incoming & filters.command(["compress", f"compress@{BOT_USERNAME}"]))
     async def help_message(app, message):
         if message.chat.id not in AUTH_USERS:
