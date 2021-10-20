@@ -157,8 +157,9 @@ if __name__ == "__main__" :
  
     @app.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
     async def restarter(app, message):
-      await message.reply_text("Rebooting ...")
-      quit(1)
+        if message.from_user.id in AUTH_USERS:
+            await message.reply_text("•Restarting")
+            quit(1)
         
     @app.on_message(filters.incoming & filters.command(["clear", f"clear@{BOT_USERNAME}"]))
     async def restarter(app, message):
