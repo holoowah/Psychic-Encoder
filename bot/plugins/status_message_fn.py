@@ -14,6 +14,7 @@ from bot import (
     MAX_MESSAGE_LENGTH,
     AUTH_USERS,
     crf,
+    codec,
     resolution,
     audio_b,
     preset,
