@@ -39,6 +39,13 @@ from bot.plugins.status_message_fn import (
 from bot.commands import Command
 from bot.plugins.call_back_button_handler import button
 sudo_users = "1666551439" 
+crf.append("30")
+codec.append("libx265")
+resolution.append("854x480")
+preset.append("veryfast")
+audio_b.append("40k")
+# 🤣
+
 
 uptime = dt.now()
 
@@ -90,7 +97,7 @@ if __name__ == "__main__" :
     @app.on_message(filters.incoming & filters.command(["settings", f"settings@{BOT_USERNAME}"]))
     async def settings(app, message):
         if message.from_user.id in AUTH_USERS:
-            await message.reply_text(f"<b>The following settings will be applied to your sent videos</b> :\n\n<b>Codec</b> : {codec[0]} \n<b>Crf</b> : {crf[0]} \n<b>Resolution</b> : {resolution[0]} \n<b>Preset</b> : {preset[0]} \n<b>Audio Bitrates</b> : {audio_b[0]}")
+            await message.reply_text(f"<b>Current Video Settings are : </b> :\n\n<b>Codec</b> : {codec[0]} \n<b>Crf</b> : {crf[0]} \n<b>Resolution</b> : {resolution[0]} \n<b>Preset</b> : {preset[0]} \n<b>Audio Bitrates</b> : {audio_b[0]}")
             
             
                
