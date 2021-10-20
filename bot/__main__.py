@@ -106,7 +106,7 @@ if __name__ == "__main__" :
 
             
                
-   @app.on_message(filters.incoming & filters.command(["preset", f"preset@{BOT_USERNAME}"]))
+    @app.on_message(filters.incoming & filters.command(["preset", f"preset@{BOT_USERNAME}"]))
     async def changepr(app, message):
         if message.from_user.id in AUTH_USERS:
             pop = message.text.split(" ", maxsplit=1)[1]
