@@ -13,6 +13,10 @@ from bot import (
     data,
     app,
     crf,
+    resolution,
+    audio_b,
+    preset,
+    codec,
     watermark 
 )
 from bot.helper_funcs.utils import add_task, on_task_complete
@@ -82,7 +86,32 @@ if __name__ == "__main__" :
             await message.reply_text(OUT)
         else:
             await message.reply_text("Error")
-    
+            
+            
+    @app.on_message(filters.incoming & filters.command(["resolution", f"resolution@{BOT_USERNAME}"]))
+    async def changer(app, message):
+        if message.from_user.id in AUTH_USERS:
+            r = message.text.split(" ", maxsplit=1)[1]
+            OUT = f"<b>{r}</b> resolution has been set!"
+            resolution.insert(0, f"{r}")
+            await message.reply_text(OUT)
+        else:
+            await message.reply_text("Error")
+            
+        
+            
+            
+    @app.on_message(filters.incoming & filters.command(["audio", f"audio@{BOT_USERNAME}"]))
+    async def changea(app, message):
+        if message.from_user.id in AUTH_USERS:
+            aud = message.text.split(" ", maxsplit=1)[1]
+            OUT = f"Audio has been set at bitrate <b>{aud}</b>"
+            audio_b.insert(0, f"{aud}")
+            await message.reply_text(OUT)
+        else:
+            await message.reply_text("Error")
+            
+        
     @app.on_message(filters.incoming & filters.command(["compress", f"compress@{BOT_USERNAME}"]))
     async def help_message(app, message):
         if message.chat.id not in AUTH_USERS:
@@ -92,22 +121,7 @@ if __name__ == "__main__" :
         if len(data) == 1:
          await query.delete()   
          await add_task(message.reply_to_message)     
-            
-    @app.on_message(filters.incoming & filters.command(["movie_mode", f"movie_mode@{BOT_USERNAME}"]))
-    async def help_message(app, message):
-        if message.chat.id not in AUTH_USERS:
-            return await message.reply_text("You are not authorised to use this bot")
-        await message.reply_text("```Movie Mode has been set", quote=True)
-        cmd1.insert(0, "-pix_fmt yuv420p -preset veryfast -s 980x536 -crf 28 -b:v 2M -profile:a  aac_he_v2 -c:a libopus -ac 1 -vbr 2 -ab 40k -c:s copy -y")
-                 
-            
-    @app.on_message(filters.incoming & filters.command(["normal_mode", f"normal_mode@{BOT_USERNAME}"]))
-    async def help_message(app, message):
-        if message.chat.id not in AUTH_USERS:
-            return await message.reply_text("You are not authorised to use this bot")
-        await message.reply_text("```Normal Mode has been set", quote=True)
-        cmd1.insert(0, "-s 820x480 -x265-params 'bframes=8:psy-rd=1:ref=3:aq-mode=3:aq-strength=0.8:deblock=1,1' -crf 33.5 -c:a libopus -b:a 32k -c:s copy -ac 2  -ab 32k  -vbr 2 -level 3.1 -threads 3 -bf 3")
-                         
+ 
     @app.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
     async def restarter(app, message):
       await message.reply_text("Rebooting ...")
