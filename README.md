@@ -1,7 +1,8 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-::
-Oof 
-Your Bot Father Setting to put
+## Compressor/Encoder Bot
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/holoowah/Psychic-Encoder/tree/main)
+
+Bot Father Commands
 ```
 start - Check Bot Alive💋
 help - check For Your Knowledge
